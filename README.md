@@ -16,10 +16,10 @@ Para encontrar o melhor vértice para ser o central, podemos aplicar uma otimiza
 ## Leitura do arquivo
 
 Nesse caso, temos um grafo não orientado. Esse grafo pode ser representado pelo arquivo grafo01.txt que segue o formato:
-
-> <num_vertices> <num_arestas>
-> 
-> <vertice_inicial> <vertice_final> <custo> <- Repetição para cada aresta
+```
+<num_vertices> <num_arestas>
+<vertice_inicial> <vertice_final> <custo> <- Repetição para cada aresta
+```
 
 Foi usado o TAB (\t) como separador. Faça a leitura do arquivo:
                                 
@@ -27,20 +27,21 @@ Foi usado o TAB (\t) como separador. Faça a leitura do arquivo:
                                                
 Implemente um algoritmo de computação de caminho mínimo que considere cada vértice do grafo como potencial vértice inicial, isso deve gerar uma tabela relacionando cada vértice (linhas) e a distância para os demais (colunas).
 
-´´´
+```
 def gerar_tabela_dist(G):
   D = np.zeros((1,1)) # Alterar
   ### Faça o código aqui
   return D
 
 D = gerar_tabela_dist(G)
-print(D)                                     
-´´´
+print(D)                    
+```
+                
 ## Cálculo dos vetores de distância
                                                
 Calcule os vetores de somatório de distâncias e o vetor de distâncias máximas para cada linha da tabela/matriz D.
                                                
-´´´
+```
 def dist_sum_vec(D):
   dist_vec = np.zeros(D.shape[0])
   ### Faça o código aqui
@@ -56,7 +57,7 @@ max_vec = max_dist_vec(D)
 
 print(dist_vec)
 print(max_vec)
-´´´
+```
                                                
 ## Determinando a estação central
                                                
