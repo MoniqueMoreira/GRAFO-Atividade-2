@@ -31,7 +31,7 @@ Implemente um algoritmo de computação de caminho mínimo que considere cada v�
 
 ```
 def gerar_tabela_dist(G):
-  D = np.zeros((1,1)) # Alterar
+  D = np.zeros((1,1)) # Alterar Criando um matriz de 1x1 com zeros
   ### Faça o código aqui
   return D
 
@@ -45,12 +45,12 @@ Calcule os vetores de somatório de distâncias e o vetor de distâncias máxima
                                                
 ```
 def dist_sum_vec(D):
-  dist_vec = np.zeros(D.shape[0])
+  dist_vec = np.zeros(D.shape[0]) #criando um array com tamanho linhas da matriz 
   ### Faça o código aqui
   return dist_vec
 
 def max_dist_vec(D):
-  max_vec = np.zeros(D.shape[0])
+  max_vec = np.zeros(D.shape[0])#criando um array com tamanho linhas da matriz
   ### Faça o código aqui
   return max_vec
 
