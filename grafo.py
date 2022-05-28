@@ -1,3 +1,5 @@
+import  numpy as np
+
 class Vertice():
     def __init__(self, id):
         self.id = id
@@ -46,12 +48,16 @@ class Aresta():
 	
 class Grafo():
     def __init__(self, orientado = False, lenV = 0, lenA = 0 ) -> None:
-        self.v = []
-        self.a = []
-        self.orientado = orientado
-        self.ord = lenV
-        self.size = lenA
-
+        self.v = [] # Lista de vertices existente no grafo
+        self.a = [] # Lista de aresta existente no grafo
+        self.madj = [] # Matriz de adjecencia 
+        self.orientado = orientado # Grafo orintado? True or False
+        self.ord = lenV # Quantidade de vertices
+        self.size = lenA # Quantide de aresta
+        # Floyd --------------------------
+        self.D = []
+        self.A = []
+        
     def set_orientado(self):
         # Definir de grafo é orintado
         self.orientado = True
@@ -131,8 +137,16 @@ class Grafo():
                 return True 
         return False
 
+    def matriz_adj(self):
+        self.madj = np.zeros((len(self.v),len(self.v)))
+        for i in self.a:
+            self.madj[i.origem-1][i.destino-1] = i.peso
+        return self.madj
+
     def __str__(self) -> str:
         #imprimir grafo
+        print("Quantidade de Vertices: {}".format(self.ord))
+        print("Quantidade de Arestas: {}".format(self.size))
         print("Vertices: ")
         print(self.get_vertices())
         print("Arestas: ")
@@ -194,4 +208,27 @@ class Grafo():
                     i.anterior = v.id
         #self.print_Dijkstra()
 
-        
+# Floyd ----------------------------------------------------------------------
+    def iniciar_matriz(self):
+        self.matriz_adj()
+        self.D = self.madj.copy()
+        self.A = np.zeros((len(self.v),len(self.v)))
+        for l in range(len(self.v)):
+            for c in range(len(self.v)):
+                if l != c and self.D[l][c] == 0:
+                    self.D[l][c] = np.inf
+                    self.A[l][c] = 0
+                else:
+                    self.A[l][c] = c
+
+    def floyd(self):
+        self.iniciar_matriz()
+        for k in range(len(self.v)):
+            for i in range(len(self.v)):
+                for j in range(len(self.v)):
+                    if self.D[i][j] > self.D[i][k] + self.D[k][j]:
+                        self.D[i][j] =  self.D[i][k] + self.D[k][j]
+                        self.A[i][j] = self.A[i][k]
+        #print(self.D)
+        #print(self.A)
+        return self.D

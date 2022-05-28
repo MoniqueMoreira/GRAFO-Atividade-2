@@ -11,7 +11,7 @@ Considere o problema em que existe uma instalação de múltiplos sensores em um
 # Cenário 1:
 Nesta aplicação, vamos supor 12 locais de instalação de sensor, mas um deles deve ser escolhido como estação central. Usando os conceitos de teoria dos grafos, cada local de instalação pode ser considerado um vértice, enquanto o custo de comunicação (ou distância) entre eles são as arestas. O grafo a seguir representa isso:
 
-![Screenshot](grafo.png)
+![Screenshot](grafo.jpg)
 
 Para encontrar o melhor vértice para ser o central, podemos aplicar uma otimização considerando dois parâmetros. Tomando um vértice candidato a vértice central, computamos o somatório dos custos para chegar nos demais vértices e o custo para o vértice mais distante, para questões de desempate.
 
