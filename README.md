@@ -68,3 +68,53 @@ Use os dados e informações computadas para determinar o vértice que será usa
 # Cenário 2:
                                                
 Agora que o cenário 1 foi resolvido, vamos testar em outras situações (pode fazer chamadas das funções já implementadas). Encontre o vértice que representa melhor uma estação central no grafo apresentado no arquivo grafo02.txt. Dessa vez, considere um grafo direcionado, portanto a função que calcula a matriz de caminho mínimo gerar_tabela_dist(G) vai mudar.
+
+# Solução: ----------------------------------------------------------------
+
+  A resolução é feita em 2 arquivos, o ***sensor.py*** que responsável pela parte da resolução do problema, o ***grafo.py*** que serve para criar No e Aresta(funções para gerenciamento um grafo).
+ 
+  Na ***primeira parte*** do problema e gerado o grafo através da entradas dos arquivos ***grafo01.txt*** e ***grafo02.txt***, onde na função
+  
+ > criar_grafo(G,arq)
+ 
+  Em ***sensor.py*** e  recebe um objeto do tipo grafo é um arquivo toda contendo como entrada a quantidede de nós, a quantidade de arestas é as aresta do tipo ***u,v,peso***
+  
+  Na ***segunda parte*** do problema teremos que busca o caminho mínimo, por meio da implementação do algoritmo de  ***Floyd***, que está dentro do arquivo ***grafo.py***
+  
+> Floyd(self)
+
+  Onde para cada vértice ele calcularar o caminho minimo com outros vertices, formando uma tabela do tipo:
+  
+            Vertice 1 Vertice 2 ... Vertice n
+  Vertice 1     0         x             n
+  Vertice 2     x         0             y
+     ...
+  Vertice n     n         y             0
+  
+  sendo x,y,n os custos do minimo entre o vertice (vertice k, vertice j) assim em diante
+  
+  Na ***terceira parte*** do problema ele irá somar os custo minimo de um vertice as outros vertices, e guarda o maior custo a vertice mais distante, atraves das funções
+  
+> dist_sum_vec(D)
+> max_dist_vec(D)
+
+ Na ***quarta parte*** com o somatório dos custo minimo de cada vertice ao outros vertices, e com o maior custo de vertice, ele ira decidir qual verice será o centrla atraves da função 
+ 
+ > Central(dist_vec,max_vec)
+ 
+ Na qual ele escolherá o vertice que possuir o menor  somatório de custo, em caso de dois vertices destintos com somatório iguais ele irá escolher aquele que possuir a menor distancia do vertice mais distante.
+
+
+## Entrada: 
+  Arquivo txt, primeira linha será quantidade de vertices é numero de aresta, proximas linhas será as aresta do tipo vertice u vertice v peso
+## Saída:
+  Tabela de distancia
+  lista de somatório de custos
+  lista de custo do vertice mais distante 
+  vertice central
+## Exemplo de execução:
+### Caso 1: 
+![Screenshot](caso1.png)
+### Caso 2:
+![Screenshot](caso2.png)
+![Screenshot](grafocaso2.png)
