@@ -100,7 +100,12 @@ Agora que o cenário 1 foi resolvido, vamos testar em outras situações (pode f
   
   sendo x,y,n os custos do mínimo entre o vertice (vertice k, vértice j) assim em diante
   
-  Na ***terceira parte*** do problema ele irá somar os custo mínimo de um vértice aos outros vértices, exemplo o somatório dos custos do vértice 1, seria o custo do vértice 1 até vértice 2 mais o custo do vértice 1 até vérticee 3 e assim por diante, e guarda o maior custo ao vértice mais distante, através das funções
+  Na ***terceira parte*** do problema ele irá somar os custo mínimo de um vértice aos outros vértices, 
+  Por exemplo o somatório dos custos do vértice 1, seria o custo do vértice 1 até vértice 2 + o custo do vértice 1 até vérticee 3 + o custo do vértice 1 até vérctice n
+  
+  SM = ΣC1i, i=1 até n 
+  
+  É guarda o maior custo ao vértice mais distante, através das funções:
   
 > dist_sum_vec(D)
 
