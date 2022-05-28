@@ -71,50 +71,68 @@ Agora que o cenário 1 foi resolvido, vamos testar em outras situações (pode f
 
 # Solução: ----------------------------------------------------------------
 
-  A resolução é feita em 2 arquivos, o ***sensor.py*** que responsável pela parte da resolução do problema, o ***grafo.py*** que serve para criar No e Aresta(funções para gerenciamento um grafo).
+  A resolução é feita em 2 arquivos, o ***sensor.py*** que responsável pela parte da resolução do problema, o ***grafo.py*** que serve para criar No e Aresta(funções para gerenciamento de um grafo).
  
   Na ***primeira parte*** do problema e gerado o grafo através da entradas dos arquivos ***grafo01.txt*** e ***grafo02.txt***, onde na função
   
  > criar_grafo(G,arq)
  
-  Em ***sensor.py*** e  recebe um objeto do tipo grafo é um arquivo toda contendo como entrada a quantidede de nós, a quantidade de arestas é as aresta do tipo ***u,v,peso***
+  Em ***sensor.py*** e  recebe um objeto do tipo grafo é um arquivo contendo como entrada a quantidade de nós, a quantidade de arestas é as aresta do tipo ***u v peso***
   
   Na ***segunda parte*** do problema teremos que busca o caminho mínimo, por meio da implementação do algoritmo de  ***Floyd***, que está dentro do arquivo ***grafo.py***
   
 > Floyd(self)
 
-  Onde para cada vértice ele calcularar o caminho minimo com outros vertices, formando uma tabela do tipo:
+  Onde para cada vértice ele calculara o caminho mínimo com outros vértices, formando uma tabela do tipo:
   
-            Vertice 1 Vertice 2 ... Vertice n
-  Vertice 1     0         x             n
-  Vertice 2     x         0             y
+  ```
+                  Vértice 1          Vértice 2            ...         Vértice n
+  
+  Vértice 1     	     0                x                                n
+  
+  Vértice 2            x                0                                y
+  
      ...
-  Vertice n     n         y             0
+     
+  Vértice n            n                y                                0
+  ```
+              	
   
-  sendo x,y,n os custos do minimo entre o vertice (vertice k, vertice j) assim em diante
+  sendo x,y,n os custos do mínimo entre o vertice (vertice k, vértice j) assim em diante
   
-  Na ***terceira parte*** do problema ele irá somar os custo minimo de um vertice as outros vertices, e guarda o maior custo a vertice mais distante, atraves das funções
+  Na ***terceira parte*** do problema ele irá somar os custo mínimo de um vértice aos outros vértices, exemplo o somatório dos custos do vértice 1, seria o custo do vértice 1 até vértice 2 mais o custo do vértice 1 até vérticee 3 e assim por diante, e guarda o maior custo ao vértice mais distante, através das funções
   
 > dist_sum_vec(D)
+
 > max_dist_vec(D)
 
- Na ***quarta parte*** com o somatório dos custo minimo de cada vertice ao outros vertices, e com o maior custo de vertice, ele ira decidir qual verice será o centrla atraves da função 
+ Na ***quarta parte*** com o somatório dos custo mínimo de cada vértice ao outros vértices, e com o maior custo ao vértice mais distânte, ele irá decidir qual vértice será o central através da função 
  
  > Central(dist_vec,max_vec)
  
- Na qual ele escolherá o vertice que possuir o menor  somatório de custo, em caso de dois vertices destintos com somatório iguais ele irá escolher aquele que possuir a menor distancia do vertice mais distante.
+ Na qual ele escolherá o vértice que possuir o menor  somatório dos custos, em caso de dois vértices distintos com somatório iguais ele irá escolher aquele que possuir a menor distância ao vértice mais distante.
 
 
 ## Entrada: 
-  Arquivo txt, primeira linha será quantidade de vertices é numero de aresta, proximas linhas será as aresta do tipo vertice u vertice v peso
+  Arquivo txt,
+  
+  Primeira linha será quantidade de vértices é numero de aresta, 
+  
+  Próximas linhas será às aresta do tipo ***vértice u*** o ***vértice v*** é ***peso***
+  
 ## Saída:
-  Tabela de distancia
-  lista de somatório de custos
-  lista de custo do vertice mais distante 
-  vertice central
+  Tabela de distância,
+  
+  Lista de somatório de custos,
+  
+  Lista de custo do vértice mais distante ,
+  
+  Vértice central,
+  
 ## Exemplo de execução:
 ### Caso 1: 
 ![Screenshot](caso1.png)
 ### Caso 2:
 ![Screenshot](caso2.png)
 ![Screenshot](grafocaso2.png)
+### Grafo montado atravez do site : http://graphonline.ru/pt/?graph=egPfoQXzkBxyZagD
